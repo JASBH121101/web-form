@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070816">
+  <meta name="description" content="Futuristic bilingual contact form built with HTML, Tailwind CSS and JavaScript.">
+  <title>Contact Form UI | Portfolio Project</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: "#070816",
+            panel: "#101126",
+            electric: "#6688ff",
+            violet: "#a855f7"
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+            display: ["Space Grotesk", "Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="estilo.css">
+  <script src="interacción.js" defer></script>
+</head>
+
+<body class="min-h-screen bg-midnight font-sans text-slate-100 antialiased">
+  <div class="background-glow" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+  </div>
+
+  <main class="relative z-10 min-h-screen px-4 py-7 sm:px-6 sm:py-10">
+    <div class="page-shell mx-auto w-full max-w-6xl">
+
+      <nav class="topbar mb-10 flex items-center justify-between gap-4">
+        <a class="brand flex items-center gap-3" href="#top" aria-label="Contact Form UI">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m3 7 9 6 9-6"></path>
+            </svg>
+          </span>
+          <span class="font-display text-sm font-bold tracking-wider">CONTACT<span class="brand-accent">.UI</span></span>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <span class="hidden text-xs text-slate-500 sm:inline" data-i18n="languageLabel">Idioma</span>
+          <div class="language-switch" role="group" aria-label="Language selector">
+            <button type="button" id="lang-es" class="language-button active" aria-pressed="true">ES</button>
+            <button type="button" id="lang-en" class="language-button" aria-pressed="false">EN</button>
+          </div>
+        </div>
+      </nav>
+
+      <header id="top" class="hero-header mb-9 text-center sm:mb-12">
+        <a href="#contact" class="availability-pill mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="availability">DISPONIBLE PARA NUEVOS PROYECTOS</span>
+          <span aria-hidden="true" class="pill-arrow">↗</span>
+        </a>
+
+        <p class="eyebrow mb-3 text-xs font-bold uppercase tracking-[0.25em]" data-i18n="eyebrow">HABLEMOS DE TU PRÓXIMA IDEA</p>
+
+        <h1 class="hero-title font-display text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          <span data-i18n="heroTitle">Hagámoslo</span><span class="gradient-text">.</span>
+        </h1>
+
+        <p class="mx-auto mt-5 max-w-xl text-sm leading-7 text-slate-400 sm:text-base" data-i18n="heroDescription">
+          ¿Tenés un proyecto en mente? Contame qué estás construyendo. Me encantaría conocer tu idea.
+        </p>
+        <div class="hero-line mx-auto mt-7" aria-hidden="true"></div>
+      </header>
+
+      <div class="contact-card grid overflow-hidden lg:grid-cols-[0.88fr_1.12fr]">
+
+        <aside class="info-panel relative flex flex-col justify-between p-6 sm:p-9 lg:p-10">
+          <div class="info-decoration" aria-hidden="true"></div>
+
+          <div class="relative z-10">
+            <div class="icon-tile mb-8 flex h-14 w-14 items-center justify-center rounded-2xl" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+            </div>
+
+            <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]" data-i18n="infoKicker">CONECTEMOS</p>
+            <h2 class="font-display text-2xl font-semibold leading-snug text-white sm:text-3xl" data-i18n="infoTitle">
+              Las grandes ideas empiezan con una conversación.
+            </h2>
+            <p class="mt-4 max-w-sm text-sm leading-7 text-slate-400" data-i18n="infoDescription">
+              Compartí tus ideas, hacé una consulta o contame qué desafío querés resolver.
+            </p>
+
+            <div class="mt-9 space-y-5">
+              <div class="info-item flex items-start gap-4">
+                <div class="mini-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="2.5" y="4.5" width="19" height="15" rx="2"></rect>
+                    <path d="m3 6 9 7 9-7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-white" data-i18n="emailTitle">Escribime</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-400" data-i18n="emailDescription">Contame qué necesitás.</p>
+                </div>
+              </div>
+
+              <div class="info-item flex items-start gap-4">
+                <div class="mini-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9.5"></circle>
+                    <path d="M12 6.5v5.8l3.7 2.2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-white" data-i18n="responseTitle">Respuesta rápida</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-400" data-i18n="responseDescription">La meta es responder en 1–2 días hábiles.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10 mt-10 border-t border-white/10 pt-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <p class="text-xs font-semibold tracking-[0.15em] text-slate-500">CONTACT FORM UI</p>
+              <span class="live-status"><span></span><span data-i18n="demoLabel">PROYECTO DEMO</span></span>
+            </div>
+            <p class="mt-2 text-xs text-slate-600" data-i18n="portfolioLabel">Diseñado para portafolio frontend</p>
+          </div>
+        </aside>
+
+        <section id="contact" class="form-panel p-6 sm:p-9 lg:p-10">
+          <div class="mb-8">
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <p class="section-kicker text-xs font-bold uppercase tracking-[0.2em]" data-i18n="formKicker">FORMULARIO DE CONTACTO</p>
+              <span class="required-note text-xs"><span class="required-star">*</span> <span data-i18n="requiredText">Obligatorio</span></span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold text-white sm:text-3xl" data-i18n="formTitle">Mandame un mensaje</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-400" data-i18n="formDescription">Completá los campos y contame un poco sobre tu proyecto.</p>
+          </div>
+
+          <form id="contact-form" class="space-y-5" novalidate>
+            <div class="form-group">
+              <label for="name" class="form-label mb-2 block text-sm font-medium text-slate-200">
+                <span data-i18n="nameLabel">Nombre completo</span> <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="name-error" class="form-field w-full rounded-xl px-4 py-3.5 text-sm text-white" data-i18n-placeholder="namePlaceholder">
+              <p id="name-error" class="field-error mt-2 hidden text-xs" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label mb-2 block text-sm font-medium text-slate-200">
+                <span data-i18n="emailLabel">Correo electrónico</span> <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input type="email" id="email" name="email" placeholder="vos@ejemplo.com" autocomplete="email" required maxlength="254" aria-describedby="email-error" class="form-field w-full rounded-xl px-4 py-3.5 text-sm text-white" data-i18n-placeholder="emailPlaceholder">
+              <p id="email-error" class="field-error mt-2 hidden text-xs" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label mb-2 block text-sm font-medium text-slate-200" data-i18n="subjectLabel">¿Sobre qué querés hablar?</label>
+              <div class="select-wrap relative">
+                <select id="subject" name="subject" class="form-field w-full appearance-none rounded-xl px-4 py-3.5 pr-11 text-sm">
+                  <option value="General inquiry" data-i18n="subjectGeneral">Consulta general</option>
+                  <option value="Web design" data-i18n="subjectDesign">Diseño web</option>
+                  <option value="Web development" data-i18n="subjectDevelopment">Desarrollo web</option>
+                  <option value="Collaboration" data-i18n="subjectCollaboration">Colaboración</option>
+                  <option value="Other" data-i18n="subjectOther">Otro</option>
+                </select>
+                <svg class="select-arrow pointer-events-none absolute right-4 top-1/2 -translate-y-1/2" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="mb-2 flex items-center justify-between gap-3">
+                <label for="message" class="form-label block text-sm font-medium text-slate-200">
+                  <span data-i18n="messageLabel">Tu mensaje</span> <span class="required-star" aria-hidden="true">*</span>
+                </label>
+                <span id="character-count" class="character-count text-xs">0 / 1000</span>
+              </div>
+              <textarea id="message" name="message" rows="5" placeholder="Contame un poco sobre tu proyecto..." required minlength="10" maxlength="1000" aria-describedby="message-error character-count" class="form-field w-full resize-y rounded-xl px-4 py-3.5 text-sm leading-6 text-white" data-i18n-placeholder="messagePlaceholder"></textarea>
+              <p id="message-error" class="field-error mt-2 hidden text-xs" aria-live="polite"></p>
+            </div>
+
+            <div id="form-status" class="hidden rounded-xl border px-4 py-3 text-sm leading-6" role="status" aria-live="polite" tabindex="-1"></div>
+
+            <button type="submit" id="submit-button" class="submit-button group flex w-full items-center justify-center gap-3 rounded-xl px-5 py-4 text-sm font-semibold text-white">
+              <span id="button-text" data-i18n="submitButton">Enviar mensaje</span>
+              <svg class="submit-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 17 17 7M7 7h10v10"></path>
+              </svg>
+            </button>
+
+            <p class="demo-disclaimer text-center text-xs leading-5 text-slate-500" data-i18n="disclaimer">Esta es una demostración de portafolio. No se enviará ningún correo.</p>
+          </form>
+        </section>
+      </div>
+
+      <footer class="page-footer mt-7 flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+        <p class="text-xs text-slate-500" data-i18n="footerText">Diseñado y desarrollado como proyecto de portafolio frontend.</p>
+        <p class="footer-tech text-xs">HTML <span>·</span> Tailwind CSS <span>·</span> JavaScript</p>
+      </footer>
+
+      <p class="bottom-caption mt-5 text-center text-[10px] uppercase tracking-[0.2em] text-slate-700" data-i18n="bottomCaption">DISEÑADO PARA CONECTAR · CONSTRUIDO PARA DESTACAR</p>
+    </div>
+  </main>
+</body>
+</html>
